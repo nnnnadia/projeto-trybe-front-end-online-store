@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 export default class Home extends Component {
   state = {
@@ -17,6 +18,16 @@ export default class Home extends Component {
     } = this;
     return (
       <div>
+        <header>
+          <nav>
+            <Link
+              to="/shoppingcart"
+              data-testid="shopping-cart-button"
+            >
+              Carrinho
+            </Link>
+          </nav>
+        </header>
         <form>
           <input
             type="text"
