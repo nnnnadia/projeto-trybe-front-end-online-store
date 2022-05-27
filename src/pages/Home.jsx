@@ -1,9 +1,17 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { getCategories } from '../services/api';
+import CategorySelector from '../components/CategorySelector';
 
 export default class Home extends Component {
   state = {
     searchQuery: '',
+    categories: [],
+  }
+
+  async componentDidMount() {
+    const categories = await getCategories();
+    this.setState({ categories });
   }
 
   handleInputChange = ({ target }) => {
@@ -13,7 +21,10 @@ export default class Home extends Component {
 
   render() {
     const {
-      state: { searchQuery },
+      state: {
+        searchQuery,
+        categories,
+      },
       handleInputChange,
     } = this;
     return (
@@ -28,6 +39,17 @@ export default class Home extends Component {
             </Link>
           </nav>
         </header>
+        <aside>
+          <ul>
+            { categories.map(({ name, id }) => (
+              <CategorySelector
+                key={ id }
+                name={ name }
+                id={ id }
+              />
+            ))}
+          </ul>
+        </aside>
         <form>
           <input
             type="text"
