@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 export default class CategorySelector extends Component {
   render() {
-    const { name, id } = this.props;
+    const { name, id, onChange } = this.props;
     return (
       <li>
         <label data-testid="category" htmlFor={ id }>
@@ -12,6 +12,7 @@ export default class CategorySelector extends Component {
             id={ id }
             name="category"
             value={ id }
+            onChange={ onChange }
           />
           { name }
         </label>
@@ -23,4 +24,5 @@ export default class CategorySelector extends Component {
 CategorySelector.propTypes = {
   name: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
 };

@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { getCategories } from '../services/api';
+import { getCategories, getProductsFromCategoryAndQuery } from '../services/api';
 import CategorySelector from '../components/CategorySelector';
+import ProductCard from '../components/ProductCard';
 
 export default class Home extends Component {
   state = {
     searchQuery: '',
     categories: [],
+    category: '',
+    products: {
+      results: [],
+    },
   }
 
   async componentDidMount() {
@@ -19,13 +24,21 @@ export default class Home extends Component {
     this.setState({ [name]: value });
   }
 
+  handleSearchButton = async () => {
+    const { searchQuery, category } = this.state;
+    const products = await getProductsFromCategoryAndQuery(category, searchQuery);
+    this.setState({ products });
+  }
+
   render() {
     const {
       state: {
         searchQuery,
         categories,
+        products,
       },
       handleInputChange,
+      handleSearchButton,
     } = this;
     return (
       <div>
@@ -46,6 +59,7 @@ export default class Home extends Component {
                 key={ id }
                 name={ name }
                 id={ id }
+                onChange={ handleInputChange }
               />
             ))}
           </ul>
@@ -56,13 +70,31 @@ export default class Home extends Component {
             name="searchQuery"
             value={ searchQuery }
             onChange={ handleInputChange }
+            data-testid="query-input"
           />
+          <button
+            type="button"
+            onClick={ handleSearchButton }
+            data-testid="query-button"
+          >
+            Pesquisar
+          </button>
           {!searchQuery
               && (
                 <p data-testid="home-initial-message">
                   Digite algum termo de pesquisa ou escolha uma categoria.
                 </p>)}
         </form>
+        <div>
+          { products.results.map(({ id, price, thumbnail, title }) => (
+            <ProductCard
+              key={ id }
+              name={ title }
+              image={ thumbnail }
+              price={ price }
+            />
+          )) }
+        </div>
       </div>
     );
   }
