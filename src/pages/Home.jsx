@@ -21,10 +21,12 @@ export default class Home extends Component {
 
   handleInputChange = ({ target }) => {
     const { name, value } = target;
-    this.setState({ [name]: value });
+    this.setState({ [name]: value }, () => {
+      if (name === 'category') this.getProductFromApi();
+    });
   }
 
-  handleSearchButton = async () => {
+  getProductFromApi = async () => {
     const { searchQuery, category } = this.state;
     const products = await getProductsFromCategoryAndQuery(category, searchQuery);
     this.setState({ products });
@@ -38,7 +40,7 @@ export default class Home extends Component {
         products,
       },
       handleInputChange,
-      handleSearchButton,
+      getProductFromApi,
     } = this;
     return (
       <div>
@@ -74,7 +76,7 @@ export default class Home extends Component {
           />
           <button
             type="button"
-            onClick={ handleSearchButton }
+            onClick={ getProductFromApi }
             data-testid="query-button"
           >
             Pesquisar
