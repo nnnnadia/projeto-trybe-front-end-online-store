@@ -19,7 +19,7 @@ export default class Home extends Component {
     this.setState({ categories });
   }
 
-  handleInputChange = ({ target }) => {
+  handleInputChange = ({ target }) => { // name = searchQuery
     const { name, value } = target;
     this.setState({ [name]: value });
   }
