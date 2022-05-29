@@ -1,0 +1,22 @@
+.botao-categoria {
+  list-style: none;
+}
+
+.botao-categoria label {
+  align-items: center;
+  display: flex;
+  padding: 5px;
+  transition: box-shadow 1s;
+}
+
+.botao-categoria label:hover {
+  box-shadow: inset 0 0 10px rgb(173, 173, 133);
+}
+
+.botao-categoria label:active {
+  box-shadow: inset 0 0 10px rgb(122, 122, 82);
+}
+
+.quadrado {
+  margin-right: 5px;
+}
