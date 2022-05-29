@@ -4,6 +4,7 @@
   box-sizing: border-box;
   margin: 1px;
   padding: 0.2em;
+  transition: box-shadow 100ms;
 }
 
 .botao-carrinho:hover {
