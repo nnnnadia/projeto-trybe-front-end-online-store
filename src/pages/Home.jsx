@@ -3,7 +3,7 @@ import { getCategories, getProductsFromCategoryAndQuery } from '../services/api'
 import CategorySelector from '../components/CategorySelector';
 import ProductCard from '../components/ProductCard';
 import Header from '../components/Header';
-import '../css/menu-categorias.css'
+import '../css/menu-categorias.css';
 
 export default class Home extends Component {
   state = {
@@ -87,6 +87,7 @@ export default class Home extends Component {
             <div>
               { products.results.map(({ id, price, thumbnail, title }) => (
                 <ProductCard
+                  id={ id }
                   key={ id }
                   name={ title }
                   image={ thumbnail }
