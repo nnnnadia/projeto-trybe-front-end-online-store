@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { getCategories, getProductsFromCategoryAndQuery } from '../services/api';
 import CategorySelector from '../components/CategorySelector';
 import ProductCard from '../components/ProductCard';
+import Header from '../components/Header';
 
 export default class Home extends Component {
   state = {
@@ -44,16 +44,7 @@ export default class Home extends Component {
     } = this;
     return (
       <div>
-        <header>
-          <nav>
-            <Link
-              to="/shoppingcart"
-              data-testid="shopping-cart-button"
-            >
-              Carrinho
-            </Link>
-          </nav>
-        </header>
+        <Header />
         <aside>
           <ul>
             { categories.map(({ name, id }) => (
