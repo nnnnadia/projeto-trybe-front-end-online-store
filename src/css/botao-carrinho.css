@@ -7,7 +7,7 @@
 }
 
 .botao-carrinho:hover {
-  background-color: rgb(150, 0, 0) ;
+  background-color: rgb(150, 0, 0);
   box-shadow: 2px 2px black;
   margin: 0 2px 2px 0;
 }
@@ -21,7 +21,7 @@
   color: brown;
   display: flex;
   flex-wrap: nowrap;
-  font-family: "Exo", sans-serif;
+  font-family: Exo , sans-serif;
   font-size: 1.5em;
   font-style: italic;
   font-weight: 500;
