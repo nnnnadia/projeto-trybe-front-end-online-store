@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { getCategories, getProductsFromCategoryAndQuery } from '../services/api';
 import CategorySelector from '../components/CategorySelector';
 import ProductCard from '../components/ProductCard';
+import Header from '../components/Header';
 
 export default class Home extends Component {
   state = {
@@ -21,10 +21,12 @@ export default class Home extends Component {
 
   handleInputChange = ({ target }) => {
     const { name, value } = target;
-    this.setState({ [name]: value });
+    this.setState({ [name]: value }, () => {
+      if (name === 'category') this.getProductFromApi();
+    });
   }
 
-  handleSearchButton = async () => {
+  getProductFromApi = async () => {
     const { searchQuery, category } = this.state;
     const products = await getProductsFromCategoryAndQuery(category, searchQuery);
     this.setState({ products });
@@ -38,20 +40,11 @@ export default class Home extends Component {
         products,
       },
       handleInputChange,
-      handleSearchButton,
+      getProductFromApi,
     } = this;
     return (
       <div>
-        <header>
-          <nav>
-            <Link
-              to="/shoppingcart"
-              data-testid="shopping-cart-button"
-            >
-              Carrinho
-            </Link>
-          </nav>
-        </header>
+        <Header />
         <aside>
           <ul>
             { categories.map(({ name, id }) => (
@@ -74,7 +67,7 @@ export default class Home extends Component {
           />
           <button
             type="button"
-            onClick={ handleSearchButton }
+            onClick={ getProductFromApi }
             data-testid="query-button"
           >
             Pesquisar
