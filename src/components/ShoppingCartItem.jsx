@@ -25,11 +25,15 @@ class ShoppingCartItem extends React.Component {
   }
 
   render() {
-    const { title, thumbnail, price } = this.state;
+    const {
+      state: { title, thumbnail, price },
+      props: { quantityProduct },
+    } = this;
     return (
       <div>
-        <h2>{ title }</h2>
+        <h2 data-testid="shopping-cart-product-name">{ title }</h2>
         <img src={ thumbnail } alt={ title } />
+        <p data-testid="shopping-cart-product-quantity">{ quantityProduct }</p>
         <p>{ price }</p>
       </div>
     );
@@ -38,6 +42,7 @@ class ShoppingCartItem extends React.Component {
 
 ShoppingCartItem.propTypes = {
   idProduct: PropTypes.string.isRequired,
+  quantityProduct: PropTypes.number.isRequired,
 };
 
 export default ShoppingCartItem;

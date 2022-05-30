@@ -7,14 +7,17 @@ export default class ShoppingCart extends Component {
     const { cartItems } = this.props;
     return (
       <div>
-        {cartItems
+        {cartItems.length > 0
           ? (
-            cartItems.map((idProduct) => (
-              <ShoppingCartItem
-                key={ idProduct }
-                idProduct={ idProduct }
-              />
-            ))
+            <>
+              { cartItems.map(({ idProduct, quantityProduct }) => (
+                <ShoppingCartItem
+                  key={ idProduct }
+                  idProduct={ idProduct }
+                  quantityProduct={ quantityProduct }
+                />
+              )) }
+            </>
           ) : (
             <p data-testid="shopping-cart-empty-message">
               Seu carrinho está vazio
@@ -25,5 +28,8 @@ export default class ShoppingCart extends Component {
 }
 
 ShoppingCart.propTypes = {
-  cartItems: PropTypes.arrayOf(PropTypes.string).isRequired,
+  cartItems: PropTypes.arrayOf(PropTypes.shape({
+    idProduct: PropTypes.string,
+    quantityProduct: PropTypes.number,
+  })).isRequired,
 };

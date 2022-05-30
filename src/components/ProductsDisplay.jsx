@@ -23,6 +23,7 @@ export default class ProdutsDisplay extends Component {
               className="botao-produto"
               type="button"
               onClick={ () => buttonclick(id) }
+              data-testid="product-add-to-cart"
             >
               Adicionar ao carrinho
             </button>

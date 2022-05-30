@@ -11,10 +11,15 @@ class App extends Component {
   }
 
   addProductInCart = (id) => {
-    console.log(id);
-    this.setState(({ cartItems }) => ({
-      cartItems: [...cartItems, id],
-    }));
+    const { cartItems: currItems } = this.state;
+    if (currItems.length === 0) {
+      this.setState({ cartItems: [{ idProduct: id, quantityProduct: 1 }] });
+    }
+    if (currItems.some((item) => item.idProduct !== id)) {
+      this.setState(({ cartItems }) => ({
+        cartItems: [...cartItems, { idProduct: id, quantityProduct: 1 }],
+      }));
+    }
   }
 
   render() {
