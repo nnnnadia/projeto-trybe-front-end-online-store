@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { getCategories, getProductsFromCategoryAndQuery } from '../services/api';
 import CategorySelector from '../components/CategorySelector';
-import ProductCard from '../components/ProductCard';
 import Header from '../components/Header';
 import Search from '../components/Search';
+import ProductsDisplay from '../components/ProductsDisplay';
 import '../css/menu-categorias.css';
 
 export default class Home extends Component {
@@ -41,7 +41,9 @@ export default class Home extends Component {
         searchQuery,
         categories,
         category,
-        products,
+        products: {
+          results,
+        },
       },
       handleInputChange,
       getProductFromApi,
@@ -75,16 +77,9 @@ export default class Home extends Component {
                 <p data-testid="home-initial-message">
                   Digite algum termo de pesquisa ou escolha uma categoria.
                 </p>)}
-            <div>
-              { products.results.map(({ id, price, thumbnail, title }) => (
-                <ProductCard
-                  key={ id }
-                  name={ title }
-                  image={ thumbnail }
-                  price={ price }
-                />
-              )) }
-            </div>
+            <ProductsDisplay
+              searchResult={ results }
+            />
           </main>
         </div>
       </div>
