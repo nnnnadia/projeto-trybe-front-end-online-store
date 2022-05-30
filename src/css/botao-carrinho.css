@@ -3,7 +3,7 @@
   border-radius: 7px;
   box-sizing: border-box;
   margin: 1px;
-  padding: 0.2em;
+  padding: 1em;
   transition: box-shadow 100ms;
 }
 
@@ -19,7 +19,7 @@
 }
 
 .botao-carrinho a {
-  color: brown;
+  color: white;
   display: flex;
   flex-wrap: nowrap;
   font-family: Exo , sans-serif;

@@ -1,0 +1,38 @@
+.secao-produtos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.card-produto {
+  background-color: white;
+  border: 1px solid rgb(153, 153, 102);
+  border-radius: 10px;
+  box-shadow: 0 0 10px 3px rgb(153, 153, 102);
+  display: flex;
+  flex-flow: column nowrap;
+  flex-grow: 1;
+  margin: 0.8em;
+  padding: 1em;
+  transition: 300ms;
+  width: 17em;
+}
+
+.card-produto:hover {
+  border: 1px solid brown;
+  box-shadow: 0 0 0 2px brown;
+}
+
+.link-produto {
+  color: black;
+  display: flex;
+  flex-flow: column nowrap;
+  flex-grow: 1;
+  justify-content: space-between;
+  text-align: center;
+  text-decoration: none;
+}
+
+.link-produto img {
+  max-height: 250px;
+}

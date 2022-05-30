@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { getCategories, getProductsFromCategoryAndQuery } from '../services/api';
 import CategorySelector from '../components/CategorySelector';
-import ProductCard from '../components/ProductCard';
 import Header from '../components/Header';
+import Search from '../components/Search';
+import ProductsDisplay from '../components/ProductsDisplay';
 import '../css/menu-categorias.css';
 
 export default class Home extends Component {
@@ -23,7 +24,10 @@ export default class Home extends Component {
   handleInputChange = ({ target }) => {
     const { name, value } = target;
     this.setState({ [name]: value }, () => {
-      if (name === 'category') this.getProductFromApi();
+      if (name === 'category') {
+        this.setState({ searchQuery: '' },
+          () => this.getProductFromApi());
+      }
     });
   }
 
@@ -39,7 +43,9 @@ export default class Home extends Component {
         searchQuery,
         categories,
         category,
-        products,
+        products: {
+          results,
+        },
       },
       handleInputChange,
       getProductFromApi,
@@ -61,39 +67,21 @@ export default class Home extends Component {
               ))}
             </ul>
           </aside>
-          <main>
-            <form>
-              <input
-                type="text"
-                name="searchQuery"
-                value={ searchQuery }
-                onChange={ handleInputChange }
-                data-testid="query-input"
-              />
-              <button
-                type="button"
-                onClick={ getProductFromApi }
-                data-testid="query-button"
-              >
-                Pesquisar
-              </button>
-              {!searchQuery
-                  && (
-                    <p data-testid="home-initial-message">
-                      Digite algum termo de pesquisa ou escolha uma categoria.
-                    </p>)}
-            </form>
-            <div>
-              { products.results.map(({ id, price, thumbnail, title }) => (
-                <ProductCard
-                  id={ id }
-                  key={ id }
-                  name={ title }
-                  image={ thumbnail }
-                  price={ price }
-                />
-              )) }
-            </div>
+          <main className="container-column">
+            <Search
+              searchQuery={ searchQuery }
+              handleInputChange={ handleInputChange }
+              getProductFromApi={ getProductFromApi }
+            />
+            {!searchQuery
+              && !category
+              && (
+                <p data-testid="home-initial-message">
+                  Digite algum termo de pesquisa ou escolha uma categoria.
+                </p>)}
+            <ProductsDisplay
+              searchResult={ results }
+            />
           </main>
         </div>
       </div>
