@@ -14,3 +14,9 @@ export async function getProductsFromCategoryAndQuery(categoryId, query) {
   const parsedResponse = await fetchResponse.json();
   return parsedResponse;
 }
+
+export async function getProductsInfo(productId) {
+  const fetchResponse = await fetch(`https://api.mercadolibre.com/items/${productId}`);
+  const parsedResponse = await fetchResponse.json();
+  return parsedResponse;
+}
