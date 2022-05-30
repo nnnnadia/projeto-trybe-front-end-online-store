@@ -3,7 +3,9 @@ import { getCategories, getProductsFromCategoryAndQuery } from '../services/api'
 import CategorySelector from '../components/CategorySelector';
 import ProductCard from '../components/ProductCard';
 import Header from '../components/Header';
+import { ReactComponent as SearchIcon } from '../assets/icons/search.svg';
 import '../css/menu-categorias.css';
+import '../css/campo-busca.css';
 
 export default class Home extends Component {
   state = {
@@ -62,8 +64,8 @@ export default class Home extends Component {
               ))}
             </ul>
           </aside>
-          <main>
-            <form>
+          <main className="container-column">
+            <form className="container-row campo-busca">
               <input
                 type="text"
                 name="searchQuery"
@@ -76,14 +78,16 @@ export default class Home extends Component {
                 onClick={ getProductFromApi }
                 data-testid="query-button"
               >
+                <SearchIcon />
                 Pesquisar
               </button>
-              {!searchQuery
-                  && (
-                    <p data-testid="home-initial-message">
-                      Digite algum termo de pesquisa ou escolha uma categoria.
-                    </p>)}
             </form>
+            {!searchQuery
+              && !category
+              && (
+                <p data-testid="home-initial-message">
+                  Digite algum termo de pesquisa ou escolha uma categoria.
+                </p>)}
             <div>
               { products.results.map(({ id, price, thumbnail, title }) => (
                 <ProductCard

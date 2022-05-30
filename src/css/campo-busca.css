@@ -1,0 +1,12 @@
+.campo-busca {
+  margin: 15px;
+}
+
+.campo-busca button {
+  align-items: center;
+  display: flex;
+}
+
+.lupa {
+  margin-right: 3px;
+}
