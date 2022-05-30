@@ -9,6 +9,7 @@ export default class ProductCard extends Component {
       <div>
         <Link
           to={ `/details/${id}` }
+          data-testid="product-detail-link"
         >
           <div data-testid="product">
             <h3>{ name }</h3>

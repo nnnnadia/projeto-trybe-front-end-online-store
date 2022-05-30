@@ -4,41 +4,63 @@ import { getProductsInfo } from '../services/api';
 
 class ProductPage extends React.Component {
   state={
-    productInfo: [],
+    title: '',
+    image: '',
+    price: 0,
+    availableQuantity: 0,
+    soldQuantity: 0,
+    internationalDeliveryMode: '',
   }
 
   async componentDidMount() {
     const { match: { params: { id } } } = this.props;
     const productInfoApi = await getProductsInfo(id);
-    this.setState({ productInfo: productInfoApi });
-    console.log(this.props);
+    const {
+      title,
+      pictures,
+      price,
+      available_quantity: availableQuantity,
+      sold_quantity: soldQuantity,
+      international_delivery_mode: internationalDeliveryMode,
+    } = productInfoApi;
+    this.setState({
+      title,
+      image: pictures[0].secure_url,
+      price,
+      availableQuantity,
+      soldQuantity,
+      internationalDeliveryMode,
+    });
   }
 
   render() {
-    const { productInfo } = this.state;
+    const {
+      title,
+      image,
+      price,
+      availableQuantity,
+      soldQuantity,
+      internationalDeliveryMode,
+    } = this.state;
     return (
       <div>
-        <h2>{productInfo.title}</h2>
-        <img alt="Produto" src={ productInfo.thumbnail } />
+        <h2 data-testid="product-detail-name">{ title }</h2>
+        <img alt="Produto" src={ image } />
         <h4>
           Preço
-          { productInfo.price }
+          { price }
         </h4>
         <h4>
           Quantidade restante:
-          { productInfo.available_quantity}
+          { availableQuantity }
         </h4>
         <h4>
           Quantidade vendida:
-          { productInfo.sold_quantity}
+          { soldQuantity }
         </h4>
         <h4>
           Produto internacional:
-          { productInfo.international_delivery_mode}
-        </h4>
-        <h4>
-          Descrição:
-          { productInfo.descriptions}
+          { internationalDeliveryMode }
         </h4>
       </div>
     );
