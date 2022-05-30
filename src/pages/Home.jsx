@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { getCategories, getProductsFromCategoryAndQuery } from '../services/api';
 import CategorySelector from '../components/CategorySelector';
 import Header from '../components/Header';
@@ -50,6 +51,7 @@ export default class Home extends Component {
       handleInputChange,
       getProductFromApi,
     } = this;
+    const { addProduct } = this.props;
     return (
       <div>
         <Header />
@@ -81,6 +83,7 @@ export default class Home extends Component {
                 </p>)}
             <ProductsDisplay
               searchResult={ results }
+              buttonclick={ addProduct }
             />
           </main>
         </div>
@@ -88,3 +91,7 @@ export default class Home extends Component {
     );
   }
 }
+
+Home.propTypes = {
+  addProduct: PropTypes.func.isRequired,
+};
