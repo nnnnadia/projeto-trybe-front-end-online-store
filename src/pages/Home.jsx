@@ -3,9 +3,8 @@ import { getCategories, getProductsFromCategoryAndQuery } from '../services/api'
 import CategorySelector from '../components/CategorySelector';
 import ProductCard from '../components/ProductCard';
 import Header from '../components/Header';
-import { ReactComponent as SearchIcon } from '../assets/icons/search.svg';
+import Search from '../components/Search';
 import '../css/menu-categorias.css';
-import '../css/campo-busca.css';
 
 export default class Home extends Component {
   state = {
@@ -65,23 +64,11 @@ export default class Home extends Component {
             </ul>
           </aside>
           <main className="container-column">
-            <form className="container-row campo-busca">
-              <input
-                type="text"
-                name="searchQuery"
-                value={ searchQuery }
-                onChange={ handleInputChange }
-                data-testid="query-input"
-              />
-              <button
-                type="button"
-                onClick={ getProductFromApi }
-                data-testid="query-button"
-              >
-                <SearchIcon />
-                Pesquisar
-              </button>
-            </form>
+            <Search
+              searchQuery={ searchQuery }
+              handleInputChange={ handleInputChange }
+              getProductFromApi={ getProductFromApi }
+            />
             {!searchQuery
               && !category
               && (
