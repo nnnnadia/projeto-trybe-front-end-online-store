@@ -5,7 +5,7 @@ import '../css/secao-produtos.css';
 
 export default class ProdutsDisplay extends Component {
   render() {
-    const { searchResult } = this.props;
+    const { searchResult, buttonclick } = this.props;
     return (
       <div className="secao-produtos">
         { searchResult.map(({ id, price, thumbnail, title }) => (
@@ -22,6 +22,7 @@ export default class ProdutsDisplay extends Component {
             <button
               className="botao-produto"
               type="button"
+              onClick={ () => buttonclick(id) }
             >
               Adicionar ao carrinho
             </button>
@@ -39,4 +40,5 @@ ProdutsDisplay.propTypes = {
     thumbnail: PropTypes.string,
     title: PropTypes.string,
   })).isRequired,
+  buttonclick: PropTypes.func.isRequired,
 };

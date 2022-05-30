@@ -10,12 +10,27 @@ class App extends Component {
     cartItems: [],
   }
 
+  addProductInCart = (id) => {
+    console.log(id);
+    this.setState(({ cartItems }) => ({
+      cartItems: [...cartItems, id],
+    }));
+  }
+
   render() {
     const { cartItems } = this.state;
     return (
       <div className="App">
         <BrowserRouter>
-          <Route exact path="/" component={ Home } />
+          <Route
+            exact
+            path="/"
+            render={ () => (
+              <Home
+                addProduct={ this.addProductInCart }
+              />
+            ) }
+          />
           <Route
             path="/shoppingcart"
             render={ () => (
