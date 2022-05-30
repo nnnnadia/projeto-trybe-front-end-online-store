@@ -5,8 +5,21 @@
 }
 
 .card-produto {
-  background: red;
+  border: 3px solid red;
+  display: flex;
+  flex-flow: column nowrap;
   flex-grow: 1;
   margin: 0.8em;
+  padding: 1em;
   width: 17em;
+}
+
+.link-produto {
+  display: flex;
+  flex-flow: column nowrap;
+  flex-grow: 1;
+}
+
+.card-produto img {
+  max-height: 250px;
 }

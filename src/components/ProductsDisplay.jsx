@@ -11,14 +11,16 @@ export default class ProdutsDisplay extends Component {
         { searchResult.map(({ id, price, thumbnail, title }) => (
           <div key={ id } className="card-produto" data-testid="product">
             <Link
+              className="link-produto"
               to={ `/details/${id}` }
               data-testid="product-detail-link"
             >
-              <h3>{ title }</h3>
               <img alt="Produto" src={ thumbnail } />
+              <h3>{ title }</h3>
               <p>{ price }</p>
             </Link>
             <button
+              className="botao-produto"
               type="button"
             >
               Adicionar ao carrinho
