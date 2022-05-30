@@ -26,7 +26,7 @@ export default class Home extends Component {
     this.setState({ [name]: value }, () => {
       if (name === 'category') {
         this.setState({ searchQuery: '' },
-        () => this.getProductFromApi());
+          () => this.getProductFromApi());
       }
     });
   }
