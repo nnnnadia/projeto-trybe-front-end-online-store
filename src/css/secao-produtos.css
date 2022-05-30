@@ -1,0 +1,12 @@
+.secao-produtos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.card-produto {
+  background: red;
+  flex-grow: 1;
+  margin: 0.8em;
+  width: 17em;
+}

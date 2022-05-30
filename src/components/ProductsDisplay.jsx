@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import '../css/secao-produtos.css'
 
 export default class ProdutsDisplay extends Component {
   render() {
     const { searchResult } = this.props;
     return (
-      <div>
+      <div className="secao-produtos">
         { searchResult.map(({ id, price, thumbnail, title }) => (
           <div key={ id } className="card-produto" data-testid="product">
           <h3>{ title }</h3>
