@@ -24,7 +24,10 @@ export default class Home extends Component {
   handleInputChange = ({ target }) => {
     const { name, value } = target;
     this.setState({ [name]: value }, () => {
-      if (name === 'category') this.getProductFromApi();
+      if (name === 'category') {
+        this.setState({ searchQuery: '' },
+        () => this.getProductFromApi());
+      }
     });
   }
 
