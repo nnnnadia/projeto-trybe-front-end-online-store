@@ -43,7 +43,14 @@ class App extends Component {
                 cartItems={ cartItems }
               />) }
           />
-          <Route path="/details/:id" component={ ProductPage } />
+          <Route
+            path="/details/:id"
+            render={ (props) => (
+              <ProductPage
+                { ...props }
+                buttonclick={ this.addProductInCart }
+              />) }
+          />
         </BrowserRouter>
       </div>
     );
