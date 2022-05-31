@@ -49,7 +49,7 @@ class ProductPage extends React.Component {
         <Header />
         <main className="container-column caixa-produto">
           <h2 data-testid="product-detail-name">{ title }</h2>
-          <div className="container-row">
+          <div className="container-row detalhes-produto">
             <img alt="Produto" src={ image } />
             <aside>
               <h4>
