@@ -4,17 +4,22 @@ import ShoppingCartItem from '../components/ShoppingCartItem';
 
 export default class ShoppingCart extends Component {
   render() {
-    const { cartItems } = this.props;
+    const {
+      cartItems,
+      handleAddButton,
+      handleRemoveButton,
+    } = this.props;
     return (
       <div>
         {cartItems.length > 0
           ? (
             <>
-              { cartItems.map(({ idProduct, quantityProduct }) => (
+              { cartItems.map((product) => (
                 <ShoppingCartItem
-                  key={ idProduct }
-                  idProduct={ idProduct }
-                  quantityProduct={ quantityProduct }
+                  key={ product.id }
+                  product={ product }
+                  handleAddButton={ handleAddButton }
+                  handleRemoveButton={ handleRemoveButton }
                 />
               )) }
             </>
@@ -29,7 +34,8 @@ export default class ShoppingCart extends Component {
 
 ShoppingCart.propTypes = {
   cartItems: PropTypes.arrayOf(PropTypes.shape({
-    idProduct: PropTypes.string,
-    quantityProduct: PropTypes.number,
+    id: PropTypes.string,
   })).isRequired,
+  handleAddButton: PropTypes.func.isRequired,
+  handleRemoveButton: PropTypes.func.isRequired,
 };

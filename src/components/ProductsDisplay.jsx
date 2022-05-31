@@ -5,24 +5,24 @@ import '../css/secao-produtos.css';
 
 export default class ProdutsDisplay extends Component {
   render() {
-    const { searchResult, buttonclick } = this.props;
+    const { searchResult, handleCartButton } = this.props;
     return (
       <div className="secao-produtos">
-        { searchResult.map(({ id, price, thumbnail, title }) => (
-          <div key={ id } className="card-produto" data-testid="product">
+        { searchResult.map((product) => (
+          <div key={ product.id } className="card-produto" data-testid="product">
             <Link
               className="link-produto"
-              to={ `/details/${id}` }
+              to={ `/details/${product.id}` }
               data-testid="product-detail-link"
             >
-              <img alt="Produto" src={ thumbnail } />
-              <h3>{ title }</h3>
-              <p>{ price }</p>
+              <img alt="Produto" src={ product.thumbnail } />
+              <h3>{ product.title }</h3>
+              <p>{ product.price }</p>
             </Link>
             <button
               className="botao-produto"
               type="button"
-              onClick={ () => buttonclick(id) }
+              onClick={ () => handleCartButton(product) }
               data-testid="product-add-to-cart"
             >
               Adicionar ao carrinho
@@ -41,5 +41,5 @@ ProdutsDisplay.propTypes = {
     thumbnail: PropTypes.string,
     title: PropTypes.string,
   })).isRequired,
-  buttonclick: PropTypes.func.isRequired,
+  handleCartButton: PropTypes.func.isRequired,
 };
