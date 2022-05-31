@@ -1,10 +1,17 @@
 .campo-busca {
-  margin: 15px;
+  margin: 2em 0;
+  width: 60%;
+}
+
+.campo-busca input {
+  flex-grow: 1;
 }
 
 .campo-busca button {
   align-items: center;
   display: flex;
+  margin-left: 1em;
+  padding: 0.6em 0.8em;
 }
 
 .lupa {
