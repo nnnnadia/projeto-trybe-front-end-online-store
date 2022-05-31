@@ -5,3 +5,7 @@
   justify-content: space-between;
   padding: 1em;
 }
+
+.cabecalho a {
+  text-decoration: none;
+}
