@@ -11,6 +11,9 @@
 }
 
 main {
-  background-color: rgb(235, 235, 224);
   flex-grow: 1;
+}
+
+body {
+  background-color: rgb(235, 235, 224);
 }

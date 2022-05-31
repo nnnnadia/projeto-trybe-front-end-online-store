@@ -8,7 +8,9 @@ import '../css/botao-carrinho.css';
 export default function Header() {
   return (
     <header className="cabecalho">
-      <h1 className="titulo-principal">Online Store</h1>
+      <Link to="/">
+        <h1 className="titulo-principal">Online Store</h1>
+      </Link>
       <nav>
         <div className="botao-carrinho">
           <Link to="/shoppingcart" data-testid="shopping-cart-button">
