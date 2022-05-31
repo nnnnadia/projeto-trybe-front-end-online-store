@@ -6,7 +6,7 @@ import { ReactComponent as MinusIcon } from '../assets/icons/dash-square.svg';
 class ShoppingCartItem extends React.Component {
   render() {
     const {
-      props: { 
+      props: {
         product,
         product: {
           title,
@@ -15,7 +15,7 @@ class ShoppingCartItem extends React.Component {
           price,
         },
         handleAddButton,
-        handleRemoveButton
+        handleRemoveButton,
       },
     } = this;
     return (

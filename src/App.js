@@ -65,7 +65,7 @@ class App extends Component {
             path="/"
             render={ () => (
               <Home
-              handleCartButton={ addProductInCart }
+                handleCartButton={ addProductInCart }
               />
             ) }
           />

@@ -31,11 +31,11 @@ class ProductPage extends React.Component {
           available_quantity: availableQuantity,
           sold_quantity: soldQuantity,
           international_delivery_mode: internationalDeliveryMode,
-        }
+        },
       },
       props: {
         handleCartButton,
-      }
+      },
     } = this;
     return (
       <div>
