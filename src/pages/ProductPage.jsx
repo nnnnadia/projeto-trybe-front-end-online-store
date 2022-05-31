@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Header from '../components/Header';
 import { getProductsInfo } from '../services/api';
 import Header from '../components/Header';
 import '../css/pagina-produto.css';
@@ -44,6 +45,10 @@ class ProductPage extends React.Component {
       soldQuantity,
       internationalDeliveryMode,
     } = this.state;
+
+    const { match: { params: { id } } } = this.props;
+    const { buttonclick } = this.props;
+
     return (
       <div>
         <Header />
@@ -69,7 +74,12 @@ class ProductPage extends React.Component {
                 { internationalDeliveryMode }
               </h4>
               <button
+                className="botao-produto"
                 type="button"
+                onClick={ () => {
+                  buttonclick(id);
+                } }
+                data-testid="product-detail-add-to-cart"
               >
                 Adicionar ao carrinho
               </button>
@@ -87,6 +97,7 @@ ProductPage.propTypes = {
       id: PropTypes.string,
     }),
   }).isRequired,
+  buttonclick: PropTypes.func.isRequired,
 };
 
 export default ProductPage;
