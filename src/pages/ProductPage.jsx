@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Header from '../components/Header';
 import { getProductsInfo } from '../services/api';
-import Header from '../components/Header';
 import '../css/pagina-produto.css';
 
 class ProductPage extends React.Component {
