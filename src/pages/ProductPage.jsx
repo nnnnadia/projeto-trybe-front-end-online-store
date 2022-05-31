@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { getProductsInfo } from '../services/api';
+import Header from '../components/Header';
+import '../css/pagina-produto.css';
 
 class ProductPage extends React.Component {
   state={
@@ -44,24 +46,36 @@ class ProductPage extends React.Component {
     } = this.state;
     return (
       <div>
-        <h2 data-testid="product-detail-name">{ title }</h2>
-        <img alt="Produto" src={ image } />
-        <h4>
-          Preço
-          { price }
-        </h4>
-        <h4>
-          Quantidade restante:
-          { availableQuantity }
-        </h4>
-        <h4>
-          Quantidade vendida:
-          { soldQuantity }
-        </h4>
-        <h4>
-          Produto internacional:
-          { internationalDeliveryMode }
-        </h4>
+        <Header />
+        <main className="container-column caixa-produto">
+          <h2 data-testid="product-detail-name">{ title }</h2>
+          <div className="container-row">
+            <img alt="Produto" src={ image } />
+            <aside>
+              <h4>
+                Preço
+                { price }
+              </h4>
+              <h4>
+                Quantidade restante:
+                { availableQuantity }
+              </h4>
+              <h4>
+                Quantidade vendida:
+                { soldQuantity }
+              </h4>
+              <h4>
+                Produto internacional:
+                { internationalDeliveryMode }
+              </h4>
+              <button
+                type="button"
+              >
+                Adicionar ao carrinho
+              </button>
+            </aside>
+          </div>
+        </main>
       </div>
     );
   }
