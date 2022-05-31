@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Header from '../components/Header';
 import { getProductsInfo } from '../services/api';
 
 class ProductPage extends React.Component {
@@ -42,8 +43,13 @@ class ProductPage extends React.Component {
       soldQuantity,
       internationalDeliveryMode,
     } = this.state;
+
+    const { match: { params: { id } } } = this.props;
+    const { buttonclick } = this.props;
+
     return (
       <div>
+        <Header />
         <h2 data-testid="product-detail-name">{ title }</h2>
         <img alt="Produto" src={ image } />
         <h4>
@@ -62,6 +68,17 @@ class ProductPage extends React.Component {
           Produto internacional:
           { internationalDeliveryMode }
         </h4>
+
+        <button
+          className="botao-produto"
+          type="button"
+          onClick={ () => {
+            buttonclick(id);
+          } }
+          data-testid="product-detail-add-to-cart"
+        >
+          Adicionar ao carrinho
+        </button>
       </div>
     );
   }
@@ -73,6 +90,7 @@ ProductPage.propTypes = {
       id: PropTypes.string,
     }),
   }).isRequired,
+  buttonclick: PropTypes.func.isRequired,
 };
 
 export default ProductPage;
