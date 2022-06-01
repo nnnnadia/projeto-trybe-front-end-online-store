@@ -1,48 +1,72 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { getProductsInfo } from '../services/api';
+import { ReactComponent as PlusIcon } from '../assets/icons/plus-square.svg';
+import { ReactComponent as MinusIcon } from '../assets/icons/dash-square.svg';
+import { ReactComponent as RemoveIcon } from '../assets/icons/cart-x.svg';
 
 class ShoppingCartItem extends React.Component {
-  state = {
-    title: '',
-    thumbnail: '',
-    price: 0,
-  }
-
-  async componentDidMount() {
-    const { idProduct } = this.props;
-    const productInfo = await getProductsInfo(idProduct);
-    const {
-      title,
-      thumbnail,
-      price,
-    } = productInfo;
-    this.setState({
-      title,
-      thumbnail,
-      price,
-    });
-  }
-
   render() {
     const {
-      state: { title, thumbnail, price },
-      props: { quantityProduct },
+      props: {
+        product,
+        product: {
+          title,
+          thumbnail,
+          quantity,
+          price,
+        },
+        handleAddButton,
+        handleMinusButton,
+        handleRemoveButton,
+      },
     } = this;
     return (
       <div>
-        <h2 data-testid="shopping-cart-product-name">{ title }</h2>
+        <h2 data-testid="shopping-cart-product-name">
+          { title }
+        </h2>
         <img src={ thumbnail } alt={ title } />
-        <p data-testid="shopping-cart-product-quantity">{ quantityProduct }</p>
-        <p>{ price }</p>
+        <button
+          type="button"
+          onClick={ () => handleMinusButton(product) }
+          data-testid="product-decrease-quantity"
+        >
+          <MinusIcon />
+        </button>
+        <p data-testid="shopping-cart-product-quantity">
+          { quantity }
+        </p>
+        <button
+          type="button"
+          onClick={ () => handleAddButton(product) }
+          data-testid="product-increase-quantity"
+        >
+          <PlusIcon />
+        </button>
+        <p>
+          { price }
+        </p>
+        <button
+          type="button"
+          onClick={ () => handleRemoveButton(product) }
+        >
+          <RemoveIcon />
+        </button>
       </div>
     );
   }
 }
 
 ShoppingCartItem.propTypes = {
-  idProduct: PropTypes.string.isRequired,
-  quantityProduct: PropTypes.number.isRequired,
+  product: PropTypes.shape({
+    title: PropTypes.string,
+    thumbnail: PropTypes.string,
+    quantity: PropTypes.number,
+    price: PropTypes.number,
+  }).isRequired,
+  handleAddButton: PropTypes.func.isRequired,
+  handleMinusButton: PropTypes.func.isRequired,
+  handleRemoveButton: PropTypes.func.isRequired,
 };
 
 export default ShoppingCartItem;

@@ -10,20 +10,54 @@ class App extends Component {
     cartItems: [],
   }
 
-  addProductInCart = (id) => {
+  addProductInCart = (productToAdd) => {
     const { cartItems: currItems } = this.state;
-    if (currItems.length === 0) {
-      this.setState({ cartItems: [{ idProduct: id, quantityProduct: 1 }] });
+    let newItems = [];
+    if (currItems
+      .every(({ id }) => id !== productToAdd.id)) {
+      newItems = [...currItems, { ...productToAdd, quantity: 1 }];
+    } else {
+      newItems = currItems.map((product) => {
+        if (product.id === productToAdd.id) {
+          return ({
+            ...product,
+            quantity: product.quantity + 1,
+          });
+        }
+        return product;
+      });
     }
-    if (currItems.some((item) => item.idProduct !== id)) {
-      this.setState(({ cartItems }) => ({
-        cartItems: [...cartItems, { idProduct: id, quantityProduct: 1 }],
-      }));
-    }
+    this.setState({ cartItems: newItems });
+  }
+
+  subtractProductInCart = (productToRem) => {
+    const { cartItems: currItems } = this.state;
+    const newItems = currItems.map((product) => {
+      if (product.id === productToRem.id
+        && product.quantity > 1) {
+        return ({
+          ...product,
+          quantity: product.quantity - 1,
+        });
+      }
+      return product;
+    });
+    this.setState({ cartItems: newItems });
+  }
+
+  removeProductInCart = (productToRem) => {
+    const { cartItems: currItems } = this.state;
+    const newItems = currItems.filter(({ id }) => id !== productToRem.id);
+    this.setState({ cartItems: newItems });
   }
 
   render() {
-    const { cartItems } = this.state;
+    const {
+      state: { cartItems },
+      addProductInCart,
+      subtractProductInCart,
+      removeProductInCart,
+    } = this;
     return (
       <div className="App">
         <BrowserRouter>
@@ -32,7 +66,7 @@ class App extends Component {
             path="/"
             render={ () => (
               <Home
-                addProduct={ this.addProductInCart }
+                handleCartButton={ addProductInCart }
               />
             ) }
           />
@@ -41,6 +75,9 @@ class App extends Component {
             render={ () => (
               <ShoppingCart
                 cartItems={ cartItems }
+                handleAddButton={ addProductInCart }
+                handleMinusButton={ subtractProductInCart }
+                handleRemoveButton={ removeProductInCart }
               />) }
           />
           <Route
@@ -48,7 +85,7 @@ class App extends Component {
             render={ (props) => (
               <ProductPage
                 { ...props }
-                buttonclick={ this.addProductInCart }
+                handleCartButton={ addProductInCart }
               />) }
           />
         </BrowserRouter>

@@ -6,48 +6,37 @@ import '../css/pagina-produto.css';
 
 class ProductPage extends React.Component {
   state={
-    title: '',
-    image: '',
-    price: 0,
-    availableQuantity: 0,
-    soldQuantity: 0,
-    internationalDeliveryMode: '',
+    product: {},
   }
 
   async componentDidMount() {
     const { match: { params: { id } } } = this.props;
     const productInfoApi = await getProductsInfo(id);
-    const {
-      title,
-      pictures,
-      price,
-      available_quantity: availableQuantity,
-      sold_quantity: soldQuantity,
-      international_delivery_mode: internationalDeliveryMode,
-    } = productInfoApi;
     this.setState({
-      title,
-      image: pictures[0].secure_url,
-      price,
-      availableQuantity,
-      soldQuantity,
-      internationalDeliveryMode,
+      product: {
+        ...productInfoApi,
+        image: productInfoApi.pictures[0].secure_url,
+      },
     });
   }
 
   render() {
     const {
-      title,
-      image,
-      price,
-      availableQuantity,
-      soldQuantity,
-      internationalDeliveryMode,
-    } = this.state;
-
-    const { match: { params: { id } } } = this.props;
-    const { buttonclick } = this.props;
-
+      state: {
+        product,
+        product: {
+          title,
+          image,
+          price,
+          available_quantity: availableQuantity,
+          sold_quantity: soldQuantity,
+          international_delivery_mode: internationalDeliveryMode,
+        },
+      },
+      props: {
+        handleCartButton,
+      },
+    } = this;
     return (
       <div>
         <Header />
@@ -76,7 +65,7 @@ class ProductPage extends React.Component {
                 className="botao-produto"
                 type="button"
                 onClick={ () => {
-                  buttonclick(id);
+                  handleCartButton(product);
                 } }
                 data-testid="product-detail-add-to-cart"
               >
@@ -96,7 +85,7 @@ ProductPage.propTypes = {
       id: PropTypes.string,
     }),
   }).isRequired,
-  buttonclick: PropTypes.func.isRequired,
+  handleCartButton: PropTypes.func.isRequired,
 };
 
 export default ProductPage;

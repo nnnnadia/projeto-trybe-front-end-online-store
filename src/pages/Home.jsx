@@ -48,10 +48,10 @@ export default class Home extends Component {
           results,
         },
       },
+      props: { handleCartButton },
       handleInputChange,
       getProductFromApi,
     } = this;
-    const { addProduct } = this.props;
     return (
       <div>
         <Header />
@@ -83,7 +83,7 @@ export default class Home extends Component {
                 </p>)}
             <ProductsDisplay
               searchResult={ results }
-              buttonclick={ addProduct }
+              handleCartButton={ handleCartButton }
             />
           </main>
         </div>
@@ -93,5 +93,5 @@ export default class Home extends Component {
 }
 
 Home.propTypes = {
-  addProduct: PropTypes.func.isRequired,
+  handleCartButton: PropTypes.func.isRequired,
 };
