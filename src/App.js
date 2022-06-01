@@ -30,24 +30,24 @@ class App extends Component {
     this.setState({ cartItems: newItems });
   }
 
+  subtractProductInCart = (productToRem) => {
+    const { cartItems: currItems } = this.state;
+    const newItems = currItems.map((product) => {
+      if (product.id === productToRem.id
+        && product.quantity > 1) {
+        return ({
+          ...product,
+          quantity: product.quantity - 1,
+        });
+      }
+      return product;
+    });
+    this.setState({ cartItems: newItems });
+  }
+
   removeProductInCart = (productToRem) => {
     const { cartItems: currItems } = this.state;
-    let newItems = [];
-    if (currItems
-      .some(({ id, quantity }) => id === productToRem.id
-      && quantity > 1)) {
-      newItems = currItems.map((product) => {
-        if (product.id === productToRem.id) {
-          return ({
-            ...product,
-            quantity: product.quantity - 1,
-          });
-        }
-        return product;
-      });
-    } else {
-      newItems = currItems.filter(({ id }) => id !== productToRem.id);
-    }
+    const newItems = currItems.filter(({ id }) => id !== productToRem.id);
     this.setState({ cartItems: newItems });
   }
 
@@ -55,6 +55,7 @@ class App extends Component {
     const {
       state: { cartItems },
       addProductInCart,
+      subtractProductInCart,
       removeProductInCart,
     } = this;
     return (
@@ -75,6 +76,7 @@ class App extends Component {
               <ShoppingCart
                 cartItems={ cartItems }
                 handleAddButton={ addProductInCart }
+                handleMinusButton={ subtractProductInCart }
                 handleRemoveButton={ removeProductInCart }
               />) }
           />

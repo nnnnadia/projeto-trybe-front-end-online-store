@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { ReactComponent as PlusIcon } from '../assets/icons/plus-square.svg';
 import { ReactComponent as MinusIcon } from '../assets/icons/dash-square.svg';
+import { ReactComponent as RemoveIcon } from '../assets/icons/cart-x.svg';
 
 class ShoppingCartItem extends React.Component {
   render() {
@@ -15,6 +16,7 @@ class ShoppingCartItem extends React.Component {
           price,
         },
         handleAddButton,
+        handleMinusButton,
         handleRemoveButton,
       },
     } = this;
@@ -26,24 +28,30 @@ class ShoppingCartItem extends React.Component {
         <img src={ thumbnail } alt={ title } />
         <button
           type="button"
-          onClick={ () => handleAddButton(product) }
-          data-testid="product-increase-quantity"
+          onClick={ () => handleMinusButton(product) }
+          data-testid="product-decrease-quantity"
         >
-          <PlusIcon />
+          <MinusIcon />
         </button>
         <p data-testid="shopping-cart-product-quantity">
           { quantity }
         </p>
         <button
           type="button"
-          onClick={ () => handleRemoveButton(product) }
-          data-testid="product-decrease-quantity"
+          onClick={ () => handleAddButton(product) }
+          data-testid="product-increase-quantity"
         >
-          <MinusIcon />
+          <PlusIcon />
         </button>
         <p>
           { price }
         </p>
+        <button
+          type="button"
+          onClick={ () => handleRemoveButton(product) }
+        >
+          <RemoveIcon />
+        </button>
       </div>
     );
   }
@@ -57,6 +65,7 @@ ShoppingCartItem.propTypes = {
     price: PropTypes.number,
   }).isRequired,
   handleAddButton: PropTypes.func.isRequired,
+  handleMinusButton: PropTypes.func.isRequired,
   handleRemoveButton: PropTypes.func.isRequired,
 };
 

@@ -7,6 +7,7 @@ export default class ShoppingCart extends Component {
     const {
       cartItems,
       handleAddButton,
+      handleMinusButton,
       handleRemoveButton,
     } = this.props;
     return (
@@ -19,6 +20,7 @@ export default class ShoppingCart extends Component {
                   key={ product.id }
                   product={ product }
                   handleAddButton={ handleAddButton }
+                  handleMinusButton={ handleMinusButton }
                   handleRemoveButton={ handleRemoveButton }
                 />
               )) }
@@ -37,5 +39,6 @@ ShoppingCart.propTypes = {
     id: PropTypes.string,
   })).isRequired,
   handleAddButton: PropTypes.func.isRequired,
+  handleMinusButton: PropTypes.func.isRequired,
   handleRemoveButton: PropTypes.func.isRequired,
 };
