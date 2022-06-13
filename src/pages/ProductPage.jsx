@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Header from '../components/Header';
+import Reviews from '../components/Reviews';
 import { getProductsInfo } from '../services/api';
 import '../css/pagina-produto.css';
 
@@ -35,6 +36,11 @@ class ProductPage extends React.Component {
       },
       props: {
         handleCartButton,
+        match: {
+          params: {
+            id,
+          },
+        },
       },
     } = this;
     return (
@@ -73,6 +79,7 @@ class ProductPage extends React.Component {
               </button>
             </aside>
           </div>
+          <Reviews productId={ id } />
         </main>
       </div>
     );
