@@ -16,3 +16,7 @@
   box-shadow: 0 0 10px 3px rgb(153, 153, 102);
   padding: 2em;
 }
+
+.caixa-reviews {
+  margin: 1.5em auto;
+}
