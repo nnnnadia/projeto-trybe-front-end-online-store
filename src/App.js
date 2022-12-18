@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, BrowserRouter } from 'react-router-dom';
+import { Route, HashRouter } from 'react-router-dom';
 import './css/App.css';
 import Home from './pages/Home';
 import ProductPage from './pages/ProductPage';
@@ -60,7 +60,7 @@ class App extends Component {
     } = this;
     return (
       <div className="App">
-        <BrowserRouter>
+        <HashRouter>
           <Route
             exact
             path="/"
@@ -88,7 +88,7 @@ class App extends Component {
                 handleCartButton={ addProductInCart }
               />) }
           />
-        </BrowserRouter>
+        </HashRouter>
       </div>
     );
   }
