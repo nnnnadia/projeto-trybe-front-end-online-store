@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "/projeto-trybe-front-end-online-store/static/css/main.3d675f00.chunk.css",
+    "main.js": "/projeto-trybe-front-end-online-store/static/js/main.88af638c.chunk.js",
+    "main.js.map": "/projeto-trybe-front-end-online-store/static/js/main.88af638c.chunk.js.map",
+    "runtime-main.js": "/projeto-trybe-front-end-online-store/static/js/runtime-main.b048ad72.js",
+    "runtime-main.js.map": "/projeto-trybe-front-end-online-store/static/js/runtime-main.b048ad72.js.map",
+    "static/js/2.eb47b032.chunk.js": "/projeto-trybe-front-end-online-store/static/js/2.eb47b032.chunk.js",
+    "static/js/2.eb47b032.chunk.js.map": "/projeto-trybe-front-end-online-store/static/js/2.eb47b032.chunk.js.map",
+    "index.html": "/projeto-trybe-front-end-online-store/index.html",
+    "precache-manifest.738591ce2d2fdb59dda36d7c05337912.js": "/projeto-trybe-front-end-online-store/precache-manifest.738591ce2d2fdb59dda36d7c05337912.js",
+    "service-worker.js": "/projeto-trybe-front-end-online-store/service-worker.js",
+    "static/css/main.3d675f00.chunk.css.map": "/projeto-trybe-front-end-online-store/static/css/main.3d675f00.chunk.css.map",
+    "static/js/2.eb47b032.chunk.js.LICENSE.txt": "/projeto-trybe-front-end-online-store/static/js/2.eb47b032.chunk.js.LICENSE.txt",
+    "static/js/main.88af638c.chunk.js.LICENSE.txt": "/projeto-trybe-front-end-online-store/static/js/main.88af638c.chunk.js.LICENSE.txt",
+    "static/media/cart-x.51dbbb18.svg": "/projeto-trybe-front-end-online-store/static/media/cart-x.51dbbb18.svg",
+    "static/media/cart4.95703d9a.svg": "/projeto-trybe-front-end-online-store/static/media/cart4.95703d9a.svg",
+    "static/media/dash-square.936501fb.svg": "/projeto-trybe-front-end-online-store/static/media/dash-square.936501fb.svg",
+    "static/media/plus-square.e6668061.svg": "/projeto-trybe-front-end-online-store/static/media/plus-square.e6668061.svg",
+    "static/media/search.9b757d11.svg": "/projeto-trybe-front-end-online-store/static/media/search.9b757d11.svg",
+    "static/media/square.7e15cc48.svg": "/projeto-trybe-front-end-online-store/static/media/square.7e15cc48.svg",
+    "static/media/x-square-fill.74950255.svg": "/projeto-trybe-front-end-online-store/static/media/x-square-fill.74950255.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b048ad72.js",
+    "static/js/2.eb47b032.chunk.js",
+    "static/css/main.3d675f00.chunk.css",
+    "static/js/main.88af638c.chunk.js"
+  ]
+}
