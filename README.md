@@ -1,15 +1,17 @@
-# :construction: README customizado em construção ! :construction:
-<!-- Olá, Tryber!
-Esse é apenas um arquivo inicial para o README do seu projeto no qual você pode customizar e reutilizar todas as vezes que for executar o trybe-publisher.
+# Projeto Trybe - Front End Online Store
 
-Para deixá-lo com a sua cara, basta alterar o seguinte arquivo da sua máquina: ~/.student-repo-publisher/custom/_NEW_README.md
+Este foi o primeiro projeto em grupo que desenvolvi durante o curso da Trybe, nele temos uma versão simplificada de uma loja online consumindo dados da API do Mercado Livre.
 
-É essencial que você preencha esse documento por conta própria, ok?
-Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua criatividade brilhar!
-:warning: IMPORTANTE: você precisa deixar nítido:
-- quais arquivos/pastas foram desenvolvidos por você; 
-- quais arquivos/pastas foram desenvolvidos por outra pessoa estudante;
-- quais arquivos/pastas foram desenvolvidos pela Trybe.
--->
+#### Hebilidades desenvolvidas:
+
+- Entender o que são Métodos Ágeis
+- Entender o que é Kanban
+- Entender o que é Scrum
+- Trabalhar em equipes utilizando Kanban ou Scrum de maneira eficaz
+- E claro, as hard skills:
+  - Utilizar o React e suas ferramentas;
+  - Fazer requisições e consumir dados vindos de uma API;
+
+#### Print da aplicaç
 
 ![aplicação em execução](./frontend-online-store-print.png)
